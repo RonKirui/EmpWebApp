@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="welcomePrimefaces.xhtml">
+    <ui:define name="center_layoutUnit" >
+        <div class="p-1" style="background-color: lightseagreen; font-size: 25px; background-image:linear-gradient(lightseagreen,white); ">
+            <center ><b>EMPLOYEES</b></center>
+        </div>
+        <h:form>
+            <div class="card" style="text-align: center">
+              <p:dataTable var="employees" value="#{operationsBean.listEmployees()}">
+            <p:column headerText="Empl ID">
+                <h:outputText value="#{employees.empid}" rendered="true"/>
+            </p:column>
+                  
+            <p:column headerText="Date Added">
+                <h:inputText value="#{employees.date}" rendered="#{employees.edit}" style="color: red;"/>
+                <h:outputText value="#{employees.date}" rendered="#{not employees.edit}"/>
+            </p:column>
+
+            <p:column headerText="First Name">
+                <h:inputText value="#{employees.firstname}" rendered="#{employees.edit}" style="color: red;"/>
+                <h:outputText value="#{employees.firstname}" rendered="#{not employees.edit}"/>
+            </p:column>
+
+            <p:column headerText="Last Name">
+                <h:inputText value="#{employees.lastname}" rendered="#{employees.edit}" style="color: red;"/>
+                <h:outputText value="#{employees.lastname}" rendered="#{not employees.edit}"/>
+            </p:column>
+
+            <p:column headerText="Address">
+                <h:inputText value="#{employees.address}" rendered="#{employees.edit}" style="color: red;"/>
+                <h:outputText value="#{employees.address}" rendered="#{not employees.edit}"/>
+            </p:column>
+
+            <p:column headerText="City">
+                <h:inputText value="#{employees.city}" rendered="#{employees.edit}" style="color: red;"/>
+                <h:outputText value="#{employees.city}" rendered="#{not employees.edit}"/>
+            </p:column>
+
+            <p:column headerText="Gender">
+                <h:inputText value="#{employees.gender}" rendered="#{employees.edit}" style="color: red;"/>
+                <h:outputText value="#{employees.gender}" rendered="#{not employees.edit}"/>
+            </p:column>
+
+            <p:column headerText="Age">
+                <h:inputText value="#{employees.age}" rendered="#{employees.edit}" style="color: red;"/>
+                <h:outputText value="#{employees.age}" rendered="#{not employees.edit}"/>
+            </p:column>
+
+            <p:column headerText="Position">
+                <h:inputText value="#{employees.position}" rendered="#{employees.edit}" style="color: red;"/>
+                <h:outputText value="#{employees.position}" rendered="#{not employees.edit}"/>
+            </p:column>
+
+            <p:column headerText="Edit">
+                <h:commandButton value="Save" action="#{operationsBean.actualEmployee(employees)}" class="btn btn-success" rendered="#{employees.edit}" style="background-color: greenyellow; border-radius: 10px;"/>
+                <h:commandButton value="Edit" action="#{operationsBean.editEmployee(employees)}" class="btn btn-primary" rendered="#{not employees.edit}" style="background-color: cyan; border-radius: 10px;"/>
+            </p:column>
+
+            <p:column headerText="Delete">
+                <h:commandButton value="Delete" action="#{operationsBean.deleteEmployee(employees)}" class="btn btn-danger" style="background-color: red; border-radius: 10px;"/>
+            </p:column>
+                  
+                  
+        </p:dataTable>
+    </div>
+            
+        </h:form>
+    </ui:define>
+
+</ui:composition>

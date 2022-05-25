@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="welcomePrimefaces.xhtml">
+    
+    <link rel="stylesheet" href="https://unpkg.com/primeflex@3.1.2/primeflex.css"></link>
+    <link rel="stylesheet" href="https://unpkg.com/primeflex/themes/saga-blue.css"></link>
+    <link rel="stylesheet" href="https://unpkg.com/primeflex/themes/arya-blue.css"></link>
+    <link rel="stylesheet" href="https://unpkg.com/primeflex/themes/vela-blue.css"></link>
+
+    
+    <ui:define name="center_layoutUnit" >
+        <div class="p-1" style="background-color: lightseagreen; font-size: 25px; background-image:linear-gradient(lightseagreen,white);">
+            <center><b>NEW EMPLOYEE</b></center>
+        </div>
+        <h:form >
+            <div class="ui-fluid p-formgrid p-grid">
+                <div class="flex ml-6">
+                    <div class="p-mb-2 p-mr-2">
+                        <div class="p-field p-col-12 p-md-6">
+                            <p:outputLabel for="firstname" value="Firstname" />
+                            <p:inputText id="firstname" value="#{employeesBean.firstname}" class="ml-3" style="height: 32px; width: 350px;"/>
+                        </div><br></br>
+                        <div class="p-field p-col-12 p-md-6">
+                            <p:outputLabel for="lastname" value="Lastname" />
+                            <p:inputText id="lastname" value="#{employeesBean.lastname}" class="ml-3" style="height: 32px; width: 350px;"/>
+                        </div><br></br>
+                    </div>
+                    <div class="p-mb-2 p-mr-2 ml-6">
+                        <div class="p-field p-col-20 p-md-6">
+                            <p:outputLabel for="gender" value="Gender " />
+                            <p:selectOneMenu id="gender" class="ml-3" value="#{employeesBean.gender}" style="font-size: 25px; height: 38px; width: 353px;">
+                                <f:selectItem itemLabel="--select--" itemValue="#{null}" noSelectionOption="true"/>
+                                <f:selectItem itemLabel="Male" itemValue="male" />
+                                <f:selectItem itemLabel="Female" itemValue="male" />
+                            </p:selectOneMenu>
+                        </div><br></br>
+                        <div class="p-field p-col-12 p-md-3">
+                            <p:outputLabel for="age" value="Age" />
+                            <p:inputText id="age" class="ml-6" value="#{employeesBean.age}" style="height: 32px; width: 350px;"/>
+                        </div><br></br>
+                    </div>
+                </div>
+                <div class="p-field p-col-12 ml-6" >
+                    <p:outputLabel for="address" value="Address      " />
+                    <p:inputTextarea id="address" value="#{employeesBean.address}" rows="3" cols="91" class="ml-4"/>
+                </div><br></br>
+                <div class="flex ml-6">
+                    <div class="p-mb-2 p-mr-2">
+                        <div class="p-field p-col-12 p-md-6">
+                    <p:outputLabel for="city" value="City" />
+                    <p:inputText id="city" class="ml-7" value="#{employeesBean.city}" style="height: 32px; width: 350px;"/>
+                </div><br></br>
+                        
+                    </div>
+                    <div class="p-mb-2 p-mr-2 ml-6">
+                        <div class="p-field p-col-12 p-md-3">
+                            <p:outputLabel for="position" value="Position" />
+                            <p:inputText id="position" value="#{employeesBean.position}" class="ml-3" style="height: 32px; width: 350px;"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="mr-6">
+                    
+                    <h:commandButton class="mr-5" value="Submit" style=" color: white; padding: 5px; padding-left: 20px; padding-right: 20px; 
+                                     background-color: cyan; float: right; border-color: white; 
+                                     border-radius: 10px;" action="#{employeesBean.storeData()}"/>
+                    
+                    
+                </div>
+                
+             </div>
+            
+        </h:form>
+    </ui:define>
+
+</ui:composition>

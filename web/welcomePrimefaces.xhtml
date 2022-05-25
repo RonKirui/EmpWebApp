@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    
+    
+    <link rel="stylesheet" href="https://unpkg.com/primeflex@3.1.2/primeflex.css"></link>
+    <link rel="stylesheet" href="https://unpkg.com/primeflex/themes/saga-blue.css"></link>
+    <link rel="stylesheet" href="https://unpkg.com/primeflex/themes/arya-blue.css"></link>
+    <link rel="stylesheet" href="https://unpkg.com/primeflex/themes/vela-blue.css"></link>
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Employee Application</title>
+            </f:facet>
+            
+        
+        </h:head>
+
+        <h:body>
+            <p:layout fullPage="true">
+
+                <p:layoutUnit style="font-size: 50px; height: 100%;" position="north" size="100" closable="true"  collapsible="true">
+                  
+                    <center style="height: 100%;"><b>Employees Application</b></center>
+                </p:layoutUnit>
+
+                <p:layoutUnit style="font-size: 20px;" position="south" size="100" closable="true" collapsible="true">
+                    <center ><b> No Rights Reserved</b></center><br/>
+                    <center ><i>Developed by Ronald Kiplangat - aka Ron TheChosen</i></center>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="250" collapsible="true" style="height: 100%;">
+                    <p:menu style="background-color: lightskyblue;">
+                        <p:submenu label="MENU" style="background-color: lightseagreen;height: 100%; ">
+                            <p:menuitem value="Home" outcome="welcomePrimefaces"/>
+                            <p:menuitem value="Add employee" outcome="addEmployee"/>
+                            <p:menuitem value="View Employees" outcome="viewEmployees" />
+
+                        </p:submenu>
+
+                        
+                    </p:menu>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    
+                    <ui:insert name="center_layoutUnit">
+                        <ui:include src="home.xhtml"/>
+                    </ui:insert>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+

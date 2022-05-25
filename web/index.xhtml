@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <link rel="stylesheet" href="https://unpkg.com/primeflex@3.1.2/primeflex.css"></link>
+    <link rel="stylesheet" href="https://unpkg.com/primeflex/themes/saga-blue.css"></link>
+    <link rel="stylesheet" href="https://unpkg.com/primeflex/themes/arya-blue.css"></link>
+    <link rel="stylesheet" href="https://unpkg.com/primeflex/themes/vela-blue.css"></link>
+    <h:head>
+        <title>Employees Application</title>
+    </h:head>
+    <h:body style="background-color: aliceblue;">
+        <div class="mt-8" style="display: flex; justify-content: center;">
+            <div class="card mt-5 p-md-6" style="background-color: white; border-radius: 10px;">
+                <div class="p-2" style="background-color: lightseagreen; font-size: 30px; background-image:linear-gradient(lightseagreen,white);">
+                    <center style=""><b>LOG IN</b></center><br/>
+                </div>
+                <h:form class="mt-5">
+                    <div class="p-mb-2 p-mr-2 pl-6 pr-6">
+                        <div class="p-field p-col-12 p-md-6">
+                            <p:outputLabel for="username" value="Username" /><br/>
+                            <p:inputText id="username" value="#{logInConfigBean.username}" style="height: 32px; width: 350px;"/>
+                        </div><br></br>
+                        <div class="p-field p-col-12 p-md-6">
+                            <p:outputLabel for="password" value="Password" /><br/>
+                            <p:inputText id="password" value="#{logInConfigBean.password}"  style="height: 32px; width: 350px;"/>
+                        </div><br></br>
+                        <div class="p-field p-col-12 p-md-6 mt-2">
+                            <h:commandButton action="#{logInConfigBean.loginMethod()}" style="border-radius: 10px; width:100%; font-size: 20px; background-color: green; padding: 8px;" class="btn-success" value="Sing In"/>
+                        </div><br></br>
+                    </div>
+                </h:form>
+                <center style="color: red;"><i>You must log in first as an admin<br/>
+                        Demo username = 'admin'<br/>
+                        Demo password = 'admin'</i></center><br/>
+            </div>
+        </div>
+    </h:body>
+</html>
+
