@@ -64,7 +64,7 @@ public class LogInConfigBean {
             Connection conn;
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/employeeappdb","root","");
             // mysql statement
-            String query = "select * from admins where username="+getUsername()+" and password="+getPassword();
+            String query = "select * from 'admins' where 'username'="+getUsername()+" AND 'password'="+getPassword();
             Statement stmt = conn.createStatement();
             ResultSet res = stmt.executeQuery(query);
             
