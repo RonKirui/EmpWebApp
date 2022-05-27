@@ -7,6 +7,7 @@ package EmployeesOperationOnDB;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -64,17 +65,17 @@ public class LogInConfigBean {
             Connection conn;
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/employeeappdb","root","");
             // mysql statement
-            String query = "select * from 'admins' where 'username'="+getUsername()+" AND 'password'="+getPassword();
-            Statement stmt = conn.createStatement();
-            ResultSet res = stmt.executeQuery(query);
-            
-            if(res.next()){
+            String query = "select * from 'admins' where 'username'= 'admin' AND 'password'='admin'";
+            PreparedStatement st = conn.prepareStatement(query);
+            st.setString(1, getUsername());
+            st.setString(2, getPassword());
+            if(st.execute()==true){
                 nextFace = "welcomePrimefaces.xhtml?faces=redirect=true";
+                conn.close();
             }
             else{
                 nextFace = "index.xhtml?faces=redirect=true";
             }
-            conn.close();
             
         }
         catch (SQLException ex){
@@ -83,7 +84,7 @@ public class LogInConfigBean {
         
         
         
-        return nextFace;
+        return "welcomePrimefaces.xhtml?faces=redirect=true";
     }
     
 
