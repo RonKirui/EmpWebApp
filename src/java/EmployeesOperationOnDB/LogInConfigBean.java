@@ -8,7 +8,9 @@ package EmployeesOperationOnDB;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
@@ -22,7 +24,10 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 public class LogInConfigBean {
     
+    
     String username, password;
+    
+    
 
     /**
      * Creates a new instance of LogInConfigBean
@@ -51,38 +56,38 @@ public class LogInConfigBean {
         this.password = password;
     }
     
-    public String loginMethod(){
-        String nextFace = "";
+    public String loginMethod() throws SQLException{
+        String nextFace = "index.xhtml?faces=redirect=true";
         
-        try{
+        try {
             try {
-                Class.forName("com.mysql.jdbc.Driver");
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(EmployeesBean.class.getName()).log(Level.SEVERE, null, ex);
+                Class.forName("com.mysql.jdbc.Driver").newInstance();
+            } catch (InstantiationException ex) {
+                Logger.getLogger(LogInConfigBean.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(LogInConfigBean.class.getName()).log(Level.SEVERE, null, ex);
             }
-            Connection conn;
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LogInConfigBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Connection conn = null;
+        try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/employeeappdb","root","");
-            // mysql statement
-            String query = "select * from 'admins' where 'username'= 'admin' AND 'password'='admin'";
-            PreparedStatement st = conn.prepareStatement(query);
-            st.setString(1, getUsername());
-            st.setString(2, getPassword());
-            if(st.execute()==true){
+                // mysql statement
+            String query = "select * from 'admins' where 'username'="+getUsername()+" AND 'password'="+getPassword();
+            Statement st = conn.createStatement();
+            ResultSet res = st.executeQuery(query);
+            while(res.next()){
                 nextFace = "welcomePrimefaces.xhtml?faces=redirect=true";
                 conn.close();
             }
-            else{
-                nextFace = "index.xhtml?faces=redirect=true";
-            }
-            
-        }
-        catch (SQLException ex){
-            Logger.getLogger(EmployeesBean.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(LogInConfigBean.class.getName()).log(Level.SEVERE, null, ex);
+            conn.close();
         }
         
         
-        
-        return "welcomePrimefaces.xhtml?faces=redirect=true";
+        return nextFace;
     }
     
 
