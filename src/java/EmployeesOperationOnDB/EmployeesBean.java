@@ -32,7 +32,7 @@ public class EmployeesBean {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn;
             try {
-                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/EmployeeAppDB","root","");
+                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/employeeapp","root","");
                 // mysql statement
                 String query = "update employees set date=?, firstname=?, lastname=?, address=?, city=?, gender=?, age=?, position=? where empid="+actualEmployee.getEmpid();
 
@@ -72,7 +72,7 @@ public class EmployeesBean {
                 Logger.getLogger(EmployeesBean.class.getName()).log(Level.SEVERE, null, ex);
             }
             Connection conn;
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/EmployeeAppDB","root","");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/employeeapp","root","");
             // mysql statement
             String query = "delete from employees where empid="+deleteEmployee.getEmpid();
             PreparedStatement preparedStmt = conn.prepareStatement(query);
@@ -162,7 +162,7 @@ public class EmployeesBean {
     
     public String storeData() throws ClassNotFoundException, SQLException{
         Class.forName("com.mysql.jdbc.Driver");
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/EmployeeAppDB","root","");
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/employeeapp","root","");
         // mysql statement
         String query = " insert into employees (date, firstname, lastname, address, city, gender, age, position)"
         + " values (?, ?, ?, ?, ?, ?, ?, ?)";

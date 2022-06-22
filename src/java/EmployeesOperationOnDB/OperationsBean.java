@@ -126,7 +126,7 @@ public class OperationsBean {
         ArrayList listEmployee = new ArrayList();
         try{
         Class.forName("com.mysql.jdbc.Driver");
-            try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/EmployeeAppDB","root","")) {
+            try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/employeeapp","root","")) {
                 Statement stmt = conn.createStatement();
                 ResultSet res = stmt.executeQuery("select * from employees");
                 
